@@ -13,3 +13,20 @@ export async function getTourCodes() {
   );
   return await res.json();
 }
+
+export async function getTourCodeInfo(id) {
+  const res = await fetch(
+    `http://report.fondkamkor.kz/partner/packets/tour/${id}?is_ajax=1`,
+    {
+      method: "GET",
+      mode: "no-cors",
+      // headers: {
+      //   Accept: "application/json",
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": true,
+      //   "User-Agent": "PostmanRuntime/7.29.0",
+      // },
+    },
+  );
+  return await res.json();
+}
