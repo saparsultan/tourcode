@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "@/sass/page.scss";
 import Loading from "@/components/Loading";
+import Link from "next/link";
 
 export default function SearchTourCode() {
   const [tourCode, setTourCode] = useState("");
@@ -79,81 +80,95 @@ export default function SearchTourCode() {
           tourCodeInfo &&
           tourCodeInfo?.data &&
           !loading ? (
-            <div className="page-blank__content blank-content">
-              <div className="blank-content__name">
-                Тур № {tourCodeInfo?.data?.params_hash?.q_number}
-              </div>
-              <div className="blank-content__caption">Данные о туре</div>
-              <ul className="blank-content__list">
-                <li className="blank-content__item">
-                  <span>Номер тура в реестре</span>
-                  <span>{tourCodeInfo?.data?.params_hash?.q_number}</span>
-                </li>
-                <li className="blank-content__item">
-                  <span>Начало тура</span>
-                  <span>{tourCodeInfo?.data?.params_hash?.q_date_from}</span>
-                </li>
-                <li className="blank-content__item">
-                  <span>Конец тура</span>
-                  <span>{tourCodeInfo?.data?.params_hash?.q_date_to}</span>
-                </li>
+            <>
+              <div className="page-blank__content blank-content">
+                <div className="blank-content__name">
+                  Тур № {tourCodeInfo?.data?.params_hash?.q_number}
+                </div>
+                <div className="blank-content__caption">Данные о туре</div>
+                <ul className="blank-content__list">
+                  <li className="blank-content__item">
+                    <span>Номер тура в реестре</span>
+                    <span>{tourCodeInfo?.data?.params_hash?.q_number}</span>
+                  </li>
+                  <li className="blank-content__item">
+                    <span>Начало тура</span>
+                    <span>{tourCodeInfo?.data?.params_hash?.q_date_from}</span>
+                  </li>
+                  <li className="blank-content__item">
+                    <span>Конец тура</span>
+                    <span>{tourCodeInfo?.data?.params_hash?.q_date_to}</span>
+                  </li>
 
-                <li className="blank-content__item">
-                  <span>Страна</span>
-                  <span>{tourCodeInfo?.data?.params_hash?.q_country}</span>
-                </li>
-                <li className="blank-content__item">
-                  <span>Код авиакомпании-перевозчика (первой) </span>
-                  <span>{tourCodeInfo?.data?.params_hash?.q_airlines}</span>
-                </li>
-                <li className="blank-content__item">
-                  <span>Код аэропорта вылета (Казахстан) </span>
-                  <span>
-                    {tourCodeInfo?.data?.params_hash?.q_airport_start}
-                  </span>
-                </li>
+                  <li className="blank-content__item">
+                    <span>Страна</span>
+                    <span>{tourCodeInfo?.data?.params_hash?.q_country}</span>
+                  </li>
+                  <li className="blank-content__item">
+                    <span>Код авиакомпании-перевозчика (первой) </span>
+                    <span>{tourCodeInfo?.data?.params_hash?.q_airlines}</span>
+                  </li>
+                  <li className="blank-content__item">
+                    <span>Код аэропорта вылета (Казахстан) </span>
+                    <span>
+                      {tourCodeInfo?.data?.params_hash?.q_airport_start}
+                    </span>
+                  </li>
 
-                <li className="blank-content__item">
-                  <span>Код аэропорта прилета (первый)</span>
-                  <span>{tourCodeInfo?.data?.params_hash?.q_airport}</span>
-                </li>
-                <li className="blank-content__item">
-                  <span>Организация-турагент</span>
-                  <span>{tourCodeInfo?.data?.params_hash?.q_touragent}</span>
-                </li>
-              </ul>
-              <div className="blank-content__caption">
-                Туристы(
-                {tourCodeInfo?.data?.clients &&
-                  tourCodeInfo?.data?.clients?.length &&
-                  tourCodeInfo?.data?.clients.length}
-                )
+                  <li className="blank-content__item">
+                    <span>Код аэропорта прилета (первый)</span>
+                    <span>{tourCodeInfo?.data?.params_hash?.q_airport}</span>
+                  </li>
+                  <li className="blank-content__item">
+                    <span>Организация-турагент</span>
+                    <span>{tourCodeInfo?.data?.params_hash?.q_touragent}</span>
+                  </li>
+                </ul>
+                <div className="blank-content__caption">
+                  Туристы(
+                  {tourCodeInfo?.data?.clients &&
+                    tourCodeInfo?.data?.clients?.length &&
+                    tourCodeInfo?.data?.clients.length}
+                  )
+                </div>
+                {tourCodeInfo &&
+                  tourCodeInfo?.data?.clients &&
+                  tourCodeInfo?.data?.clients.map((item, i) => {
+                    return (
+                      <ul className="blank-content__list" key={i}>
+                        <li className="blank-content__item">
+                          <span>Паспорт</span>
+                          <span>{item?.params_hash?.c_doc_number}</span>
+                        </li>
+                        {/*<li className="blank-content__item">*/}
+                        {/*  <span>Паспорт выдан </span>*/}
+                        {/*  <span>329CH40114-14989564</span>*/}
+                        {/*</li>*/}
+                        {/*<li className="blank-content__item">*/}
+                        {/*  <span>Срок действия паспорта</span>*/}
+                        {/*  <span>329CH40114-14989564</span>*/}
+                        {/*</li>*/}
+                        {/*<li className="blank-content__item">*/}
+                        {/*  <span>Статус резидентства </span>*/}
+                        {/*  <span>329CH40114-14989564</span>*/}
+                        {/*</li>*/}
+                      </ul>
+                    );
+                  })}
               </div>
-              {tourCodeInfo &&
-                tourCodeInfo?.data?.clients &&
-                tourCodeInfo?.data?.clients.map((item, i) => {
-                  return (
-                    <ul className="blank-content__list" key={i}>
-                      <li className="blank-content__item">
-                        <span>Паспорт</span>
-                        <span>{item?.params_hash?.c_doc_number}</span>
-                      </li>
-                      {/*<li className="blank-content__item">*/}
-                      {/*  <span>Паспорт выдан </span>*/}
-                      {/*  <span>329CH40114-14989564</span>*/}
-                      {/*</li>*/}
-                      {/*<li className="blank-content__item">*/}
-                      {/*  <span>Срок действия паспорта</span>*/}
-                      {/*  <span>329CH40114-14989564</span>*/}
-                      {/*</li>*/}
-                      {/*<li className="blank-content__item">*/}
-                      {/*  <span>Статус резидентства </span>*/}
-                      {/*  <span>329CH40114-14989564</span>*/}
-                      {/*</li>*/}
-                    </ul>
-                  );
-                })}
-            </div>
+              <div className="main-grid__item" style={{ margin: "20px 0" }}>
+                <span className="main-grid__label">
+                  Возникли проблемы с туром?
+                </span>
+                <Link
+                  href="https://api.whatsapp.com/send/?phone=77018880395&text&type=phone_number&app_absent=0"
+                  target="_blank"
+                  className="main-grid__link"
+                >
+                  SOS
+                </Link>
+              </div>
+            </>
           ) : (
             !loading && (
               <div
