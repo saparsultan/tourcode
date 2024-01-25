@@ -86,16 +86,16 @@ export default function Home() {
               <div>У меня нет туркода</div>
             </div>
           </div>
-          {/*<div className="main-grid__item">*/}
-          {/*  <span className="main-grid__label">Возникли проблемы с туром?</span>*/}
-          {/*  <Link*/}
-          {/*    href="https://api.whatsapp.com/send/?phone=77018880395&text&type=phone_number&app_absent=0"*/}
-          {/*    target="_blank"*/}
-          {/*    className="main-grid__link"*/}
-          {/*  >*/}
-          {/*    SOS*/}
-          {/*  </Link>*/}
-          {/*</div>*/}
+          <div className="main-grid__item">
+            <span className="main-grid__label">Возникли проблемы с туром?</span>
+            <Link
+              href="https://api.whatsapp.com/send/?phone=77018880395&text&type=phone_number&app_absent=0"
+              target="_blank"
+              className="main-grid__link"
+            >
+              SOS
+            </Link>
+          </div>
         </div>
       </div>
     </div>

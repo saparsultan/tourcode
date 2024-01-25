@@ -1,13 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "@/sass/page.scss";
-import Loading from "@/components/Loading";
 import Link from "next/link";
+import Loading from "@/components/Loading";
+import "@/sass/home.scss";
+import "@/sass/page.scss";
 
 export default function SearchTourCode() {
   const [tourCode, setTourCode] = useState("");
   const [tourCodeInfo, setTourCodeInfo] = useState(null);
   const [searchData, setSearchData] = useState("");
+  const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -17,6 +19,16 @@ export default function SearchTourCode() {
         .then(async (response) => {
           const result = await response.json();
           setTourCodeInfo(result);
+          const clientsFunc = () => {
+            if (result && result?.data) {
+              result.data.clients.map((item, i) => {
+                const itemData = item?.params_hash?.c_doc_number;
+                setClients(itemData);
+              });
+            }
+          };
+
+          clientsFunc();
           setLoading(false);
         })
         .catch((e) => {
@@ -31,7 +43,7 @@ export default function SearchTourCode() {
   };
 
   return (
-    <div className="page-blank">
+    <div className="page-blank__container" style={{ margin: "20px 0" }}>
       <div className="container">
         <div className="page-blank">
           <h2 className="page-blank__title">Проверка туркода</h2>
@@ -75,6 +87,42 @@ export default function SearchTourCode() {
                 />
               </svg>
             </div>
+            {tourCodeInfo !== null &&
+              tourCodeInfo &&
+              tourCodeInfo?.data &&
+              !loading && (
+                <div className="main-grid__item" style={{ margin: "20px 0" }}>
+                  <span className="main-grid__label">
+                    Возникли проблемы с туром?
+                  </span>
+                  <Link
+                    href={`https://api.whatsapp.com/send?phone=+77018880395&text=Здравствуйте!🆘%0AПрошу оказать содействие в возврате в Казахстан.%0A%0AМои данные:%0AНомер тура в реестре: ${
+                      tourCodeInfo?.data?.params_hash?.q_number
+                    },%0AНачало тура: ${
+                      tourCodeInfo?.data?.params_hash?.q_date_from
+                    },%0AКонец тура: ${
+                      tourCodeInfo?.data?.params_hash?.q_date_to
+                    },%0AСтрана: ${
+                      tourCodeInfo?.data?.params_hash?.q_country
+                    },%0AКод авиакомпании-перевозчика (первой): ${
+                      tourCodeInfo?.data?.params_hash?.q_airlines
+                    },%0AКод аэропорта вылета (Казахстан): ${
+                      tourCodeInfo?.data?.params_hash?.q_airport_start
+                    },%0AКод аэропорта прилета (первый): ${
+                      tourCodeInfo?.data?.params_hash?.q_airport
+                    },%0AОрганизация-турагент: ${
+                      tourCodeInfo?.data?.params_hash?.q_touragent
+                    },%0A%0AПаспорта туристов:%0A${
+                      clients.length > 0 && clients.toString()
+                    }
+                `}
+                    target="_blank"
+                    className="main-grid__link"
+                  >
+                    SOS (Направить обращение)
+                  </Link>
+                </div>
+              )}
           </div>
           {tourCodeInfo !== null &&
           tourCodeInfo &&
@@ -105,7 +153,7 @@ export default function SearchTourCode() {
                     <span>{tourCodeInfo?.data?.params_hash?.q_country}</span>
                   </li>
                   <li className="blank-content__item">
-                    <span>Код авиакомпании-перевозчика (первой) </span>
+                    <span>Код авиакомпании-перевозчика (первой)</span>
                     <span>{tourCodeInfo?.data?.params_hash?.q_airlines}</span>
                   </li>
                   <li className="blank-content__item">
@@ -155,18 +203,6 @@ export default function SearchTourCode() {
                       </ul>
                     );
                   })}
-              </div>
-              <div className="main-grid__item" style={{ margin: "20px 0" }}>
-                <span className="main-grid__label">
-                  Возникли проблемы с туром?
-                </span>
-                <Link
-                  href="https://api.whatsapp.com/send/?phone=77018880395&text&type=phone_number&app_absent=0"
-                  target="_blank"
-                  className="main-grid__link"
-                >
-                  SOS
-                </Link>
               </div>
             </>
           ) : (
