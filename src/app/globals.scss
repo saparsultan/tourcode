@@ -204,3 +204,16 @@ a {
   align-items: center;
   gap: 8px;
 }
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 12px;
+
+  svg {
+    width: 64px;
+    height: 64px;
+  }
+}

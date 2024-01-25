@@ -1,17 +1,27 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "@/sass/page.scss";
+import Loading from "@/components/Loading";
 
 export default function SearchTourCode() {
   const [tourCode, setTourCode] = useState("");
   const [tourCodeInfo, setTourCodeInfo] = useState(null);
   const [searchData, setSearchData] = useState("");
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (searchData && searchData !== "") {
-      fetch(`/api/tourcode/${searchData}`).then(async (response) => {
-        const result = await response.json();
-        setTourCodeInfo(result);
-      });
+      setLoading(true);
+      fetch(`/api/tourcode/${searchData}`)
+        .then(async (response) => {
+          const result = await response.json();
+          setTourCodeInfo(result);
+          setLoading(false);
+        })
+        .catch((e) => {
+          setLoading(false);
+          console.log({ e });
+        });
     }
   }, [searchData]);
 
@@ -65,7 +75,10 @@ export default function SearchTourCode() {
               </svg>
             </div>
           </div>
-          {tourCodeInfo !== null && tourCodeInfo ? (
+          {tourCodeInfo !== null &&
+          tourCodeInfo &&
+          tourCodeInfo?.data &&
+          !loading ? (
             <div className="page-blank__content blank-content">
               <div className="blank-content__name">
                 Тур № {tourCodeInfo?.data?.params_hash?.q_number}
@@ -142,18 +155,25 @@ export default function SearchTourCode() {
                 })}
             </div>
           ) : (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "30px",
-                background: "#fff",
-                borderRadius: "12px",
-                marginTop: "20px",
-              }}
-            >
-              Нет результатов
+            !loading && (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "30px",
+                  background: "#fff",
+                  borderRadius: "12px",
+                  marginTop: "20px",
+                }}
+              >
+                Нет результатов
+              </div>
+            )
+          )}
+          {loading && (
+            <div className="loader" style={{ marginTop: "20px" }}>
+              <Loading />
             </div>
           )}
         </div>
