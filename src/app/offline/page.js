@@ -1,6 +1,6 @@
 import React from "react";
 
-const Offline = (props) => {
+const Offline = () => {
   return <div></div>;
 };
 

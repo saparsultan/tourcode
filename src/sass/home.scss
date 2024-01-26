@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 12px;
+
     &__item {
       display: grid;
       grid-template-columns: 1fr;
@@ -11,9 +12,11 @@
       background-color: #fff;
       border-radius: 12px;
     }
+
     &__label {
       font-size: 18px;
     }
+
     &__link {
       display: flex;
       align-items: center;
