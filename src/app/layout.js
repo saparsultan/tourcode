@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import "./globals.scss";
+import ModalsAll from "@/components/modals";
 const inter = Inter({ subsets: ["latin"] });
 
 const APP_NAME = "TourCode App";
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Header />
         <main>{children}</main>
+      <ModalsAll />
       </body>
     </html>
   );
