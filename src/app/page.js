@@ -2,8 +2,10 @@
 import Link from "next/link";
 import "./globals.scss";
 import "@/sass/home.scss";
+import {useEmptyModal} from "@/store/zustand";
 
 export default function Home() {
+  const {toggleModal} = useEmptyModal()
   return (
       <div className="main-grid__container">
         <div className="container">
@@ -102,7 +104,7 @@ export default function Home() {
                   />
                 </svg>
               </Link>
-              <div className="no-tourcode">
+              <div className="no-tourcode" onClick={() => toggleModal()}>
                 <svg
                     width="24"
                     height="24"
