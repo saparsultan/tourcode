@@ -2,9 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Loading from "@/components/Loading";
-import Back from "@/components/Back";
 import "@/sass/home.scss";
-import "@/sass/page.scss";
+import HeadPage from "@/components/HeadPage";
 
 export default function SearchTourCode() {
   const [tourCode, setTourCode] = useState("");
@@ -43,17 +42,11 @@ export default function SearchTourCode() {
     setSearchData(tourCode);
   };
 
-  console.log({tourCodeInfo})
-
   return (
       <div className="page-blank__container" style={{ margin: "20px 0" }}>
         <div className="container">
           <div className="page-blank">
-
-            <div className="page-blank__head">
-              <Back />
-              <h2 className="page-blank__title">Проверка туркода</h2>
-            </div>
+            <HeadPage title='Проверка туркода' />
             <div className="page-blank__search">
               <div className="page-blank__field">
                 <input

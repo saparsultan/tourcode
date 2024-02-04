@@ -119,4 +119,16 @@
     height: 180px;
     margin-top: 12px;
   }
+  &__text{
+    &-info {
+      ol {
+        margin-left: 20px;
+        li {
+          p {
+            margin-bottom: 12px;
+          }
+        }
+      }
+    }
+  }
 }

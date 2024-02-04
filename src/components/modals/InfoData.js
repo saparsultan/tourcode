@@ -125,11 +125,10 @@ export default function InfoData() {
                       </div>
                     </div>
                 }
-                {
-                    data?.lat !== '' && data?.lng !== '' && <div className="modal__map">
-                      <Map lat={data?.lat} lng={data?.lng}/>
+                <div className="modal__map">
+                      <Map lat={+data?.lat} lng={+data?.lng}/>
                     </div>
-                }
+
               </div>
             </div>
           </div>

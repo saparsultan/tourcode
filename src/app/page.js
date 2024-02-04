@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-import "./globals.scss";
-import "@/sass/home.scss";
 import {useEmptyModal} from "@/store/zustand";
+import "@/sass/home.scss";
 
 export default function Home() {
   const {toggleModal} = useEmptyModal()
@@ -126,7 +125,7 @@ export default function Home() {
               <span className="main-grid__label">Возникли проблемы с туром?</span>
               <Link
                   href="https://api.whatsapp.com/send/?phone=77018880395&text&type=phone_number&app_absent=0"
-                  target="_blank"
+                  target='_blank'
                   className="main-grid__link"
               >
                 SOS

@@ -4,7 +4,7 @@ import axios from "axios";
 import {useCurrentInfoModal, useEmptyModal, useInfoModal, useTravelAgencies} from "@/store/zustand";
 import Back from "@/components/Back";
 import "@/sass/home.scss";
-import "@/sass/page.scss";
+import HeadPage from "@/components/HeadPage";
 
 const TravelAgencies = () => {
   const {data, setData} = useTravelAgencies()
@@ -22,7 +22,6 @@ const TravelAgencies = () => {
   const loadData = async () => {
     try {
       const result = await axios.get("/api/tourcode");
-      console.log("result----", result?.data?.variants)
       await setData(result?.data?.variants);
     } catch (e) {
       console.log('Ошибка запроса', e);
@@ -60,12 +59,7 @@ const TravelAgencies = () => {
       <div className="page-blank__container" style={{margin: "20px 0"}}>
         <div className="container">
           <div className="page-blank">
-            <div className="page-blank__head">
-              <Back/>
-              <h2 className="page-blank__title">
-                Выберите своё турагенство из списка
-              </h2>
-            </div>
+            <HeadPage title='Выберите своё турагенство из списка' />
             <div className="page-blank__search">
               <div className="page-blank__field">
                 <input

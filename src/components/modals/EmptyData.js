@@ -31,14 +31,14 @@ export default function EmptyData() {
            <div className="modal-content">
              <p style={{fontSize: "14px", lineHeight: '137%'}}>
                Возможно, турагенство, у которого вы приобрели тур, не состоит в списке агенств системы гарантирования
-               Камкор, поэтому ваш туркаод не отображается в нашей системе. Рекомендуется связаться с агентством, у
+               Камкор, поэтому ваш туркод не отображается в нашей системе. Рекомендуется связаться с агентством, у
                которого вы приобрели тур.
              </p>
              <div className="modal__desc">
                Свяжитесь с нами для дальнейшей консультации
              </div>
              <Image src={emptyImage} alt='Турагенства нету' className="modal__img"/>
-             <Link href={`https://api.whatsapp.com/send?phone=+77018880395`} target="_blank"
+             <Link href='https://api.whatsapp.com/send/?phone=77018880395&text&type=phone_number&app_absent=0' target="_blank"
                  className="item-btn item-btn--primary"
              >
                <span>Связаться с Камкор</span>

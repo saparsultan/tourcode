@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
-import "./globals.scss";
 import ModalsAll from "@/components/modals";
 const inter = Inter({ subsets: ["latin"] });
+import "@/app/globals.scss";
+import "@/sass/page.scss";
 
 const APP_NAME = "TourCode App";
 const APP_DEFAULT_TITLE = "TourCode App";

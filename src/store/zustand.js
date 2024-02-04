@@ -20,6 +20,11 @@ export const useEmptyModal = create((set) => ({
   toggleModal: () => set((state) => ({ isShow: !state.isShow })),
 }));
 
+export const useHelpInfoModal = create((set) => ({
+  isShow: false,
+  toggleModal: () => set((state) => ({ isShow: !state.isShow })),
+}));
+
 // export const useRenameModal = create((set) => ({
 //   isShow: false,
 //   chatInfo: {},

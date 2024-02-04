@@ -1,5 +1,8 @@
 .page {
   &-blank {
+    &__container {
+      margin: 20px 0;
+    }
     &__head {
       display: flex;
       align-items: flex-start;
@@ -10,7 +13,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 2px;
       cursor: pointer;
     }
     &__title {
@@ -133,6 +135,24 @@
     &__caption {
       font-weight: 500;
       margin-bottom: 8px;
+    }
+  }
+}
+
+.help {
+  &-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid var(--color-primary);
+      border-radius: 12px;
     }
   }
 }

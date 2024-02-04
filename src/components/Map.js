@@ -16,8 +16,8 @@ export default function Map({lat, lng}) {
       const { Marker } = await loader.importLibrary('marker')
 
       const position = {
-        lat: +lat,
-        lng: +lng
+        lat: lat,
+        lng: lng
       }
 
       const mapOptions = {
