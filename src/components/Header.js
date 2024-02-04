@@ -13,8 +13,7 @@ const Header = () => {
         <div className="header">
           <div className="header-top">
             <Link
-              href="https://www.gov.kz/memleket/entities/tsm?lang=ru"
-              target="_blank"
+              href="/"
               className="header__link header__link--first"
             >
               <Image src={gerbLogo} alt="Министерство туризма и спорта РК" />
@@ -29,8 +28,7 @@ const Header = () => {
               />
             </Link>
             <Link
-              href="https://tourcode.kz/turistam/vazhno-znat2/zashchita-turista-kak-ot-chego-i-v-kakih-sluchayah"
-              target="_blank"
+              href="/"
               className="header__link header__link--three"
             >
               <Image
