@@ -153,6 +153,26 @@
       background-color: #fff;
       border: 1px solid var(--color-primary);
       border-radius: 12px;
+      cursor: pointer;
+      span {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.consultation {
+  &-blank {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    &__title {
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    &__desc {
+      margin-bottom: 20px;
     }
   }
 }

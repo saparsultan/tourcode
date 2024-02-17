@@ -121,6 +121,9 @@
   }
   &__text{
     &-info {
+      p {
+        margin-bottom: 12px;
+      }
       ol {
         margin-left: 20px;
         li {
@@ -129,6 +132,10 @@
           }
         }
       }
+    }
+    &-title {
+      font-weight: 500;
+      margin-bottom: 12px;
     }
   }
 }

@@ -22,7 +22,11 @@ export const useEmptyModal = create((set) => ({
 
 export const useHelpInfoModal = create((set) => ({
   isShow: false,
+  data: '',
+  inData: '',
   toggleModal: () => set((state) => ({ isShow: !state.isShow })),
+  setData: (content) => set(() => ({data: content})),
+  setInData: (content) => set(() => ({inData: content})),
 }));
 
 // export const useRenameModal = create((set) => ({

@@ -229,3 +229,23 @@ a {
     height: 64px;
   }
 }
+
+.tooltip {
+  &-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+  }
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 50px;
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
