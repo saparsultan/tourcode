@@ -1,57 +1,27 @@
 'use client'
-import HeadPage from "@/components/HeadPage";
-import {useHelpInfoModal} from "@/store/zustand";
-import {useRouter} from "next/navigation";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
+import {useHelpInfoModal} from "@/store/zustand";
+import HeadPage from "@/components/HeadPage";
 
 export default function HelpIn() {
   const router = useRouter()
   const {toggleModal, setData, inData} = useHelpInfoModal()
 
-  console.log({inData})
-
-
-  const helpVariants = [
-    [
-      {
-        id: 0,
-        text: 'Бонкротство туроператора',
-        ispPrevInfo: false
-      },
-      {
-        id: 1,
-        text: 'Угроза жизни и здоровью туриста',
-        ispPrevInfo: false
-      },
-      {
-        id: 2,
-        text: 'Введение чрезвычайного положения',
-        ispPrevInfo: false
-      },
-    ],
-    [
-      {
-        id: 0,
-        text: 'Бонкротство туроператора',
-        ispPrevInfo: false
-      },
-      {
-        id: 1,
-        text: 'Мошеннические действия турагентства',
-        ispPrevInfo: false
-      },
-      {
-        id: 2,
-        text: 'Необоснованное незаселение со стороны отеля',
-        ispPrevInfo: false
-      },
-    ],
-    [
-      {
-        id: 0,
-        text: 'По объективным причинам со стороны туриста (болезнь и т.д.)',
-        ispPrevInfo: false,
-        content: `<div class="modal__text-info">
+  const helpVariants = [[{
+    id: 0, text: 'Бонкротство туроператора', ispPrevInfo: false
+  }, {
+    id: 1, text: 'Угроза жизни и здоровью туриста', ispPrevInfo: false
+  }, {
+    id: 2, text: 'Введение чрезвычайного положения', ispPrevInfo: false
+  },], [{
+    id: 0, text: 'Бонкротство туроператора', ispPrevInfo: false
+  }, {
+    id: 1, text: 'Мошеннические действия турагентства', ispPrevInfo: false
+  }, {
+    id: 2, text: 'Необоснованное незаселение со стороны отеля', ispPrevInfo: false
+  },], [{
+    id: 0, text: 'По объективным причинам со стороны туриста (болезнь и т.д.)', ispPrevInfo: false, content: `<div class="modal__text-info">
           <ol>
             <li>
               <p>
@@ -87,19 +57,26 @@ export default function HelpIn() {
             </li>
           </ol>
       </div>`,
-      },
-      {
-        id: 1,
-        text: 'По семейным или иным причинам',
-        ispPrevInfo: false,
-        content: `<div class="modal__text-info">
+  }, {
+    id: 1, text: 'По семейным или иным причинам', ispPrevInfo: false, content: `<div class="modal__text-info">
           <ol>
             <li>
               <p>
                 Письменное обращение в адрес турагентства/туроператора с приложение документов причины отказа от услуг туроператора/турагентства.
               </p>
               <div class="tooltip-wrap">
-                   <div class="tooltip-btn" data-tooltip-id="my-tooltip" data-tooltip-variant="info" data-tooltip-place="right-start" data-tooltip-content="Сбор письменных доказательств (справки, свидетельства, и прочие  документы), подтверждающий факт наступления невозможности вылета. Во избежание риска утраты расходов произведенные по условиям договора на туристское обслуживание, турист вправе заключить договор добровольного страхования расходов лиц, выезжающих за границу РК, в связи с отменой поездки (ст. 806 Гражд.кодекса предусмотрено также добровольное страхование). Договор добров.страхования заключается по волеизъявлению самого заявителя, и страхов.компанией. Виды, условия и порядок добров.страхования определяются соглашением сторон. Страховым случаем будет является факт возникновения в период действия договора на туристическое обслуживание убытков Застрахованного, вызванных внезапной, непредвиденной отменой запланированной, полностью оплаченной поездки за границу (смерть, болезнь близкого родственника, травмы, заболевания застрахованного или близкого родственника, повреждение или гибель имущества и пр.). Договор добровольного страхования должен быть заключен не позднее 10 календарных дней до начала запланированной поездки. Вступает в силу со дня следующего за днем оплаты стразовой премии. Страховая сумма, страховая премия определяется соглашением сторон. При наступлении страхового случая, определённое условием договора добровольного страхования, заявитель/ застрахованный вправе требовать от Страховщика осуществить страховую выплату; при отказе Страховщика совершении указанных действий оспорить их в судебном порядке.">
+                   <div class="tooltip-btn" data-tooltip-id="my-tooltip" data-tooltip-variant="info" data-tooltip-place="top-start" data-tooltip-html='
+                   <div class="tooltip-content-wrap">
+                   <ul>
+                   <li>Сбор письменных доказательств (справки, свидетельства, и прочие  документы), подтверждающий факт наступления невозможности вылета.</li>
+                   <li>Во избежание риска утраты расходов произведенные по условиям договора на туристское обслуживание, турист вправе заключить договор добровольного страхования расходов лиц, выезжающих за границу РК, в связи с отменой поездки (ст. 806 Гражд.кодекса предусмотрено также добровольное страхование).</li>
+                   <li>Договор добров.страхования заключается по волеизъявлению самого заявителя, и страхов.компанией. Виды, условия и порядок добров.страхования определяются соглашением сторон.</li>
+                   <li>Страховым случаем будет является факт возникновения в период действия договора на туристическое обслуживание убытков Застрахованного, вызванных внезапной, непредвиденной отменой запланированной, полностью оплаченной поездки за границу (смерть, болезнь близкого родственника, травмы, заболевания застрахованного или близкого родственника, повреждение или гибель имущества и пр.).</li>
+                   <li>Договор добровольного страхования должен быть заключен не позднее 10 календарных дней до начала запланированной поездки. Вступает в силу со дня следующего за днем оплаты стразовой премии. Страховая сумма, страховая премия определяется соглашением сторон.</li>
+                   <li>При наступлении страхового случая, определённое условием договора добровольного страхования, заявитель/ застрахованный вправе требовать от Страховщика осуществить страховую выплату; при отказе Страховщика совершении указанных действий оспорить их в судебном порядке.</li>
+                   </ul>
+                   </div>'
+                   >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" fill="white"/>
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7.25C12.4142 7.25 12.75 7.58579 12.75 8V13C12.75 13.4142 12.4142 13.75 12 13.75C11.5858 13.75 11.25 13.4142 11.25 13V8C11.25 7.58579 11.5858 7.25 12 7.25Z" fill="#D5251B"/>
@@ -123,12 +100,8 @@ export default function HelpIn() {
             </li>
           </ol>
       </div>`,
-      },
-      {
-        id: 2,
-        text: 'Банкротство туроператора',
-        ispPrevInfo: false,
-        content: `<div class="modal__text-info">
+  }, {
+    id: 2, text: 'Банкротство туроператора', ispPrevInfo: false, content: `<div class="modal__text-info">
           <ol>
             <li>
               <p>
@@ -162,12 +135,8 @@ export default function HelpIn() {
             </li>
           </ol>
       </div>`,
-      },
-      {
-        id: 3,
-        text: 'Мошеннические действия турагента',
-        ispPrevInfo: true,
-        content: `<div class="modal__text-info">
+  }, {
+    id: 3, text: 'Мошеннические действия турагента', ispPrevInfo: true, content: `<div class="modal__text-info">
           <ol>
             <li>
               <p>
@@ -189,12 +158,8 @@ export default function HelpIn() {
             </li>
           </ol>
       </div>`,
-      },
-      {
-        id: 4,
-        text: 'Отмена рейса авиакомпанией',
-        ispPrevInfo: true,
-        content: `<div class="modal__text-info">
+  }, {
+    id: 4, text: 'Отмена рейса авиакомпанией', ispPrevInfo: true, content: `<div class="modal__text-info">
           <p>
             При задержке или отмене рейсов по вине авиакомпании пассажир вправе требовать в зависимости от задержки прохладительные напитки, горячее питание.
           </p>
@@ -226,81 +191,77 @@ export default function HelpIn() {
             </li>
           </ol>
       </div>`,
-      }
-    ]
-  ]
+  }]]
 
   const openModal = (ispPrevInfo, text, content) => {
-    if(+inData?.id === 0 || +inData?.id === 1) {
+    if (+inData?.id === 0 || +inData?.id === 1) {
       router.push('/search')
     } else {
       toggleModal()
       const newObj = {
-        text: text,
-        content: content
+        text: text, content: content
       }
       setData(newObj)
     }
   }
 
-  return (
-      <div className='page-blank__container'>
-        <div className="container">
-          <div className="page-blank">
-            <HeadPage title={inData?.title}/>
-            <div className="help-list__wrap">
-              <ul className="help-list list-reset">
-                {
-                    helpVariants && helpVariants[inData?.id].map(({id, text, ispPrevInfo, content}) => {
-                      return (
-                          <li key={id} className='help-list__item' onClick={() => openModal(ispPrevInfo, text, content)}>
+  return (<div className='page-blank__container'>
+    <div className="container">
+      <div className="page-blank">
+        <HeadPage title={inData?.title}/>
+        <div className="help-list__wrap">
+          <ul className="help-list list-reset">
+            {helpVariants && helpVariants[inData?.id] && helpVariants[inData?.id].map(({
+                                                                                         id,
+                                                                                         text,
+                                                                                         ispPrevInfo,
+                                                                                         content
+                                                                                       }) => {
+              return (
+                  <li key={id} className='help-list__item' onClick={() => openModal(ispPrevInfo, text, content)}>
                           <span>
                             {text}
                           </span>
-                            <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                  d="M14.4297 5.92999L20.4997 12L14.4297 18.07"
-                                  stroke='var(--color-primary)'
-                                  strokeWidth="1.5"
-                                  strokeMiterlimit="10"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                              />
-                              <path
-                                  d="M3.5 12H20.33"
-                                  stroke='var(--color-primary)'
-                                  strokeWidth="1.5"
-                                  strokeMiterlimit="10"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                              />
-                            </svg>
-                          </li>
-                      )
-                    })
-                }
-              </ul>
-            </div>
-
-            <div className="consultation-blank">
-              <h3 className="consultation-blank__title">
-                Нужна юридическая консультация?
-              </h3>
-              <div className="consultation-blank__desc">
-                Можете обратится к нашим юристам
-              </div>
-              <Link className="item-btn item-btn--primary" href="https://api.whatsapp.com/send?phone=77018880395" target='_blank' style={{justifyContent: 'center'}}><span>Связаться с Камкор</span>
-              </Link>
-            </div>
-
-          </div>
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          d="M14.4297 5.92999L20.4997 12L14.4297 18.07"
+                          stroke='var(--color-primary)'
+                          strokeWidth="1.5"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                      />
+                      <path
+                          d="M3.5 12H20.33"
+                          stroke='var(--color-primary)'
+                          strokeWidth="1.5"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                      />
+                    </svg>
+                  </li>)
+            })}
+          </ul>
         </div>
+        {inData && inData?.id !== 2 && <div className="consultation-blank">
+          <h3 className="consultation-blank__title">
+            Нужна юридическая консультация?
+          </h3>
+          <div className="consultation-blank__desc">
+            Можете обратится к нашим юристам
+          </div>
+          <Link className="item-btn item-btn--primary" href="https://api.whatsapp.com/send?phone=77018880395"
+                target='_blank' style={{justifyContent: 'center'}}><span>Связаться с Камкор</span>
+          </Link>
+        </div>}
       </div>
-  )
+    </div>
+  </div>)
 }

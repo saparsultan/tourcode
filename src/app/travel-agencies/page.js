@@ -1,10 +1,9 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {useCurrentInfoModal, useEmptyModal, useInfoModal, useTravelAgencies} from "@/store/zustand";
-import Back from "@/components/Back";
-import "@/sass/home.scss";
 import HeadPage from "@/components/HeadPage";
+import "@/sass/home.scss";
 
 const TravelAgencies = () => {
   const {data, setData} = useTravelAgencies()

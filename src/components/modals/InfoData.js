@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import {useCurrentInfoModal, useInfoModal} from "@/store/zustand";
+import {useEffect, useRef} from "react";
 import Image from "next/image";
+import {useCurrentInfoModal, useInfoModal} from "@/store/zustand";
 import Map from "@/components/Map";
 
 export default function InfoData() {
-  const { toggleModal } = useInfoModal();
-  const { data } = useCurrentInfoModal();
+  const {toggleModal} = useInfoModal();
+  const {data} = useCurrentInfoModal();
   const modalRef = useRef();
 
   useEffect(() => {
@@ -19,16 +19,13 @@ export default function InfoData() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [toggleModal]);
 
   const onCloseModal = () => {
     toogle();
   };
 
-  console.log({data})
-
-  return (
-      <div className="modal__overlay">
+  return (<div className="modal__overlay">
         <div className="modal-wrap">
           <div
               ref={modalRef}
@@ -49,91 +46,77 @@ export default function InfoData() {
                   </div>
                 </div>
                 <div className="modal__row">
-                  {
-                      data?.town !== '' && <div className="modal__info-item">
-                        <div className="modal__info-label">
-                          Город
-                        </div>
-                        <div className="modal__info-text">
-                          {data?.town}
-                        </div>
-                      </div>
-                  }
-                  {
-                      data?.url !== '' && <div className="modal__info-item">
-                        <div className="modal__info-label">
-                          Сайт
-                        </div>
-                        <div className="modal__info-text">
-                          {data?.url}
-                        </div>
-                      </div>
-                  }
+                  {data?.town !== '' && <div className="modal__info-item">
+                    <div className="modal__info-label">
+                      Город
+                    </div>
+                    <div className="modal__info-text">
+                      {data?.town}
+                    </div>
+                  </div>}
+                  {data?.url !== '' && <div className="modal__info-item">
+                    <div className="modal__info-label">
+                      Сайт
+                    </div>
+                    <div className="modal__info-text">
+                      {data?.url}
+                    </div>
+                  </div>}
                 </div>
-                {
-                    data?.orgname !== '' && <div className="modal__info-item">
-                      <div className="modal__info-label">
-                        Организация
-                      </div>
-                      <div className="modal__info-text">
-                        {data?.orgname}
-                      </div>
-                    </div>
-                }
-                {
-                    data?.chieffname !== '' && <div className="modal__info-item">
-                      <div className="modal__info-label">
-                        Директор турагенства
-                      </div>
-                      <div className="modal__info-text">
-                        {data?.chieffname}
-                      </div>
-                    </div>
-                }
+                {data?.orgname !== '' && <div className="modal__info-item">
+                  <div className="modal__info-label">
+                    Организация
+                  </div>
+                  <div className="modal__info-text">
+                    {data?.orgname}
+                  </div>
+                </div>}
+                {data?.chieffname !== '' && <div className="modal__info-item">
+                  <div className="modal__info-label">
+                    Директор турагенства
+                  </div>
+                  <div className="modal__info-text">
+                    {data?.chieffname}
+                  </div>
+                </div>}
               </div>
               <div className="modal__bottom">
                 <h3 className="modal__title">
                   Контактная информация
                 </h3>
-                {
-                    data?.phone !== '' && <div className="modal__info-item">
-                      <div className="modal__info-label">
-                        Телефон
-                      </div>
-                      <div className="modal__info-text">
-                        {data?.phone}
-                      </div>
-                    </div>
-                }
-                {
-                    data?.email !== '' && <div className="modal__info-item">
-                      <div className="modal__info-label">
-                        Email
-                      </div>
-                      <div className="modal__info-text">
-                        {data?.email}
-                      </div>
-                    </div>
-                }
-                {
-                    data?.address !== '' && <div className="modal__info-item">
-                      <div className="modal__info-label">
-                        Адрес
-                      </div>
-                      <div className="modal__info-text">
-                        {data?.address}
-                      </div>
-                    </div>
-                }
+                {data?.phone !== '' && <div className="modal__info-item">
+                  <div className="modal__info-label">
+                    Телефон
+                  </div>
+                  <div className="modal__info-text">
+                    {data?.phone}
+                  </div>
+                </div>}
+                {data?.email !== '' && <div className="modal__info-item">
+                  <div className="modal__info-label">
+                    Email
+                  </div>
+                  <div className="modal__info-text">
+                    {data?.email}
+                  </div>
+                </div>}
+                {data?.address !== '' && <div className="modal__info-item">
+                  <div className="modal__info-label">
+                    Адрес
+                  </div>
+                  <div className="modal__info-text">
+                    {data?.address}
+                  </div>
+                </div>}
                 <div className="modal__map">
-                      <Map lat={+data?.lat} lng={+data?.lng}/>
-                    </div>
+                  <Map lat={+data?.lat} lng={+data?.lng}/>
+                </div>
 
               </div>
             </div>
           </div>
           <div className="modal-close" onClick={onCloseModal}>
-          <svg
+            <svg
                 width="32"
                 height="32"
                 viewBox="0 0 24 24"
@@ -164,6 +147,5 @@ export default function InfoData() {
             </svg>
           </div>
         </div>
-      </div>
-  );
+      </div>);
 }

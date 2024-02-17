@@ -6,15 +6,15 @@ import HelpInfo from "@/components/modals/HelpInfo";
 import "@/sass/modals.scss";
 
 export default function ModalsAll() {
-  const { isShow: isShowInfo } = useInfoModal();
-  const { isShow: isShowEmpty } = useEmptyModal();
-  const { isShow: isShowHelpInfo } = useHelpInfoModal();
+  const {isShow: isShowInfo} = useInfoModal();
+  const {isShow: isShowEmpty} = useEmptyModal();
+  const {isShow: isShowHelpInfo} = useHelpInfoModal();
 
   return (
       <>
-        {isShowInfo && <InfoData />}
-        {isShowEmpty && <EmptyData />}
-        {isShowHelpInfo && <HelpInfo />}
+        {isShowInfo && <InfoData/>}
+        {isShowEmpty && <EmptyData/>}
+        {isShowHelpInfo && <HelpInfo/>}
       </>
   );
 }

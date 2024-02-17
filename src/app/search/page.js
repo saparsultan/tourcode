@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Loading from "@/components/Loading";
-import "@/sass/home.scss";
 import HeadPage from "@/components/HeadPage";
+import "@/sass/home.scss";
 
 export default function SearchTourCode() {
   const [tourCode, setTourCode] = useState("");
